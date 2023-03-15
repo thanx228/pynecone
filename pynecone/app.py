@@ -429,11 +429,7 @@ async def process(
 
     # Postprocess the event.
     post = app.postprocess(state, event, update.delta)
-    if post is not None:
-        return StateUpdate(delta=post)
-
-    # Return the update.
-    return update
+    return StateUpdate(delta=post) if post is not None else update
 
 
 async def ping() -> str:
